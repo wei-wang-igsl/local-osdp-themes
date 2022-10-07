@@ -1,0 +1,41 @@
+<!DOCTYPE html [
+    <!ENTITY nbsp "&#160;"> 
+]>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+  <f:view>
+    <h:head>
+      <ui:insert name="metadata" />
+      <meta charset="utf-8" />
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta http-equiv="cache-control" content="no-cache" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      <title>#{title}</title>
+
+      <h:outputStylesheet library="osdp" name="css/dplogin.css"/>
+      <h:outputStylesheet library="osdp" name="css/idp.css"/>
+    </h:head>
+    <h:body>
+      <div class="main-wrapper">
+        <div id="header-logo-container">
+          <div class="header-logo" title="香港特別行政區政府,政府資訊科技總監辦公室"></div>
+        </div>
+        <span class="header-title">Departmental Portal</span>
+        <div id="main-content-container">
+          <div id="login-content-container">
+            <ui:insert name="content" />
+            <div class="form-footer">
+            	&nbsp;
+            </div>
+          </div>
+          <div id="image-content-container">
+            <h:graphicImage id="login-image" name="img/login.jpg" library="osdp" alt="Replace or remove this logo" />
+          </div>
+        </div>
+      </div>
+    </h:body>
+  </f:view>
+</html>

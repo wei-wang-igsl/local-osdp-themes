@@ -1,0 +1,185 @@
+<html>
+	<head>
+		<meta http-equiv="X-UA-compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<title>OSDP Applications List</title>
+		<link rel="stylesheet" type="text/css" href="./theme/main.css">
+		<link rel="stylesheet" type="text/css" href="./theme/leftmenu.css">
+		<link rel="stylesheet" type="text/css" href="./theme/style.css">
+		<link rel="stylesheet" type="text/css" href="./theme/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="./theme/cus.css">
+		<script src="./js/jquery-3.5.1.min.js"></script>
+		<script>
+		
+		// define default applist row style
+		var appListDefaultRowStyle = 
+			"<tr class='applistRow'>"  +
+			"<td class='appProvider'>#appProvider#</td>" +
+			"<td class='appName'>#appUrl#</td>" +
+			"</tr>";
+
+		// override default applist row style
+		var appListRowStyle = {
+		};
+
+		// override applist-mapping
+		var appInfo = {
+		};
+	  
+		// begin of core logic
+		var contentManager = {
+			elementTag : {
+				appProvider : '#appProvider#',
+				appUrl : '#appUrl#'
+			},
+			createContent : function(json) {
+				this.createLoginContent(json);
+				this.createAppListContent($("#remoteAppList"), json.remoteAppList);
+				this.createAppListContent($("#localAppList"), json.localAppList);
+				this.createPopup(json);
+			},
+			createLoginContent : function(json) {
+				var context = window.location.href.substring(0, window.location.href.indexOf("hksarg") + 6);
+				var unauthorizedAccess = $("#unauthorizedAccess");
+				unauthorizedAccess.before("<p>Hello! " + (json.requestHeader.CN || "") + "</p>");
+
+				if (json.showLastFailLoginTime) {
+					unauthorizedAccess.before("<p>Last Unsuccessful Login Time : " + json.displayLastFailLoginTime + "</p>");
+				}
+				if (json.showLastLoginTime) {
+					unauthorizedAccess.before("<p>Last Login Time : " + json.displayLastLoginTime + "</p>");
+				}
+			},
+			createAppListContent : function(table, appList) {
+				if (!appList) { // appList may be empty, i.e. remote has exception
+					table.append(appListDefaultRowStyle
+						.replace(this.elementTag.appProvider, 'ERROR')
+						.replace(this.elementTag.appUrl, 'ERROR')
+					);
+					return;
+				}
+				for (let i = 0; i < appList.length; i++){
+					var app = appList[i];
+					var rowStyle = (appListRowStyle[app.dp_app_desc] || appListDefaultRowStyle);
+					var appInfoItem = appInfo[app.dp_app_url];
+
+					rowStyle = rowStyle.replace(this.elementTag.appProvider, (appInfoItem ? appInfoItem.serviceProvider : app.dp_domain_abbr));
+					rowStyle = this.createAppUrlContentSaml20(table, app, rowStyle);
+					table.append(rowStyle);
+				}
+			},
+			createAppUrlContentSaml20 : function(table, app, rowStyle) {
+					return rowStyle.replace(this.elementTag.appUrl,
+						"<a href=\"javascript:launchApp('" + app.appUrl + "')\">" + app.dp_app_desc + "</a>");
+			},
+			createPopup : function(json) {
+				var applistUrl = window.location.href;
+				var popupReference = window.open("dp_popup.jsp?applistUrl=" + applistUrl +
+					"&welcomeURL=/" + "&SLOUrl=" + json.sloUrl + "?backUrl=" + window.top.location.href +
+					"&uid=" + json.uid + "&changePasswordURL=" + json.changePasswordUrl +
+					"&w=false",
+					"Popup", "fullscreen=no,toolbar=no,status=no,menubar=no,scrollbars=no,resizable=no,width=500,height=400");
+				popupReference.focus();
+			}
+		};
+         
+		function launchApp(url) {
+			//Comment out the either One Option
+			window.open(url,"_blank");
+			//window.location = url; //Option 2. for same window
+		}
+		// end of core login
+		 
+
+		// trigger core logic
+		$(function() {
+			var winUrl = window.location.href;
+			var contextName = "applist";
+			var contextNameIndex = winUrl.indexOf(contextName);
+			var appListServletUrl = winUrl.substring(0, contextNameIndex + contextName.length) + '/AppListServlet';
+
+			$.ajax({
+				type: "GET",
+				dataType: "json",
+				url: appListServletUrl,
+				data: {},
+				success : contentManager.createContent.bind(contentManager),	// bind 'this' to contentManager
+				error: function(xhr, status, error) {
+					var errorMessage = xhr.status + ': ' + xhr.statusText
+					console.log('Error:');
+					console.log(errorMessage);
+					alert('Failed to retrieve app list.');
+				}
+			});
+		});
+		 
+      </script>
+   </head>
+   <body>
+      <div id="wrapper" class="clearfix">
+         <div id="container" class="clearfix">
+            <header>
+               <img src="./images/banner_smartcity_1.jpg" class="header_banner">
+               <img src="./images/logo-main-tc.png" class="header-logo__long">
+            </header>
+            <div id="content" class="clearfix">
+               <form class="form form--user">
+                  <div class="container" class="clearfix">
+                     <div class="inner-content">
+                     	<div id="form__field" class="form__field" style="width: 802px;">
+							<table style="width: 802px;">
+                              	<tr>
+                                  <td>
+                                      <h2 class="page-title">Welcome to<br>Departmental Portal<br>Applications List</h2>
+                                  </td>
+<!--								  
+                                  <td style="width: 200px; text-align: right; vertical-align: top; padding-top: 15px">
+                                      <a id="contextChangePassword" href="" target="_blank">Change Password</a>
+                                  </td>
+                                  <td style="width: 150px; text-align: right; vertical-align: top; padding-top: 15px">
+                                      <a id="contextLogout" href="" target="_top">Logout</a>
+                                  </td>
+-->
+                              </tr>
+                          </table>
+                      	</div>
+                        <p id="unauthorizedAccess">Please note that unauthorized access is forbidden to access this AppList and application.</p>
+                        <h3>Local Applications List</h3>
+                        <table id="localAppList" class="table table-bordered table-hover table--user-account" style="width: 802px;">
+                           <tr>
+                              <th>Provider</th>
+                              <th>URL</th>
+                           </tr>
+                        </table>
+                        <br>
+                        <h3>Remote Applications List</h3>
+                        <table id="remoteAppList" class="table table-bordered table-hover table--user-account" style="width: 802px;">
+                           <tbody></tbody>
+                        </table>
+                     </div>
+                  </div>
+               </form>
+            </div>
+            <footer>
+               <div class="container container-footer">
+                  <div class="footer__bottom">
+                     <div class="footer__logos">
+                        &nbsp;
+                     </div>
+                     <div class="footer__copyright">
+                        <span>© 2019 Office of the Government Chief Information Officer</span><span class="footer__bottom-sp">|</span>
+                        <span>Last Review Date : </span><span id="revisionDate">12 September 2019</span>
+                     </div>
+                  </div>
+               </div>
+            </footer>
+         </div>
+      </div>
+   </body>
+</html>

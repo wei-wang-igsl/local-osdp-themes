@@ -1,0 +1,19 @@
+<!DOCTYPE html [
+    <!ENTITY nbsp "&#160;"> 
+]>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+  <ui:composition>
+    <div class="footer__bottom">
+		<div class="footer__logos">
+		</div>
+		<div class="footer__copyright">
+			<h:outputText styleClass="footer__copyright" value="#{resourceBundle['footer_copyright']}" />
+            <h:outputText styleClass="footer__bottom-sp" value="#{resourceBundle['footer_bottom_sp']}" />
+            <h:outputText value="#{resourceBundle['revision_date_prefix']}" />
+            <h:outputText id="revisionDate" value="#{resourceBundle['revision_date']}" />
+		</div>
+	</div>
+  </ui:composition>
+</html>
