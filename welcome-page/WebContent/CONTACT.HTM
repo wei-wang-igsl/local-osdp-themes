@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>DH Departmental Portal</title>
+
+<!--<META name=GENERATOR content="MSHTML 9.00.8112.16555">-->
+<link rel="styleSheet" type="text/css" href="images/style.css">
+<script language="javascript">
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v3.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function fntStart() {
+    document.login.username.value = "";
+    document.login.password.value = "";
+    document.login.username.focus();
+}
+
+function checkFields() {
+ if (document.login.username.value=="") {
+   alert("Please input Login ID");
+   document.login.username.focus();
+   return false;
+ }
+
+ if (document.login.password.value=="") {
+   alert("Please input password");
+   document.login.password.focus();
+   return false;
+ }
+}
+</script></head>
+
+<body onload="fntStart()" background="images/background.jpg" alink="#ff6600" leftmargin="0" topmargin="0" text="black" vlink="#ff6600" link="#ff6600" marginheight="0" marginwidth="0">
+<form onsubmit="return checkFields()" method="post" name="login" action="https://idp.dh.hksarg/idp/profile/SAML2/POST/SSO?execution=e1s2" autocomplete="off">
+<table border="0" cellspacing="0" cellpadding="0" width="700" bgcolor="#ffffff" align="center">
+  <tbody>
+  <tr>
+    <td><img src="images/header.png" width="700" height="83">
+      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+        <tbody>
+        <tr>
+          <td height="234" width="10">
+            <p align="right"><br></p>
+            <p align="center"> </p></td>
+          <td valign="top" width="479">
+            <div align="left">
+            <p><br><img src="images/banner.gif" width="300" height="39"></p>
+            <table border="0" cellspacing="3" cellpadding="0" bgcolor="white" align="center">
+              <tbody>
+              <tr>
+                <td class="formhead" width="544">
+                                If you forget your Departmental Portal password or your password is expired, you can simply reset your password by your own.  
+
+<br><br>Please follow the instructions below:-
+
+<br><br>(1) Click "Forget password" in log-in page
+
+<br><br>(2) Insert your user name e.g. tmchan
+
+<br><br>(3) Receive a Password Reset Token via email
+
+<br><br>(4) Type in the Token and set your new password in Password Reset Page 
+
+<br><br>(5) Click "Submit"
+
+<br><br>If there is any problem in receiving the Token, you may apply for manual reset in writing to EO(Per)5 and include the following information:
+
+<br><br>- Full Name in English
+<br>- First 4 alphanumeric digits on HKID [A123***(*)]
+<br>- Clinic/Office
+<br>- Service
+<br>- Rank
+<br>- Contact Telephone Number
+<br>- Email Address
+
+<br><br>Fax No.: 2116 3796
+<br>Lotus Notes Email: eo_per5@dh.gov.hk
+
+<br><br>For enquiries, please contact ACO(Per)71 at 3107 2517.
+
+<br><br>如果忘記密碼/密碼已經失效，你可以直接自行重設密碼。
+
+<br><br>請依從以下步驟重設密碼：
+
+<br><br>(1) 於登入頁面點選"Forget password"
+
+<br><br>(2) 輸入你的使用者名稱 e.g. tmchan
+
+<br><br>(3) 經電郵獲取驗証碼
+
+<br><br>(4) 於密碼重設頁面輸入驗証碼並更改密碼
+
+<br><br>(5) 點選 "Submit"
+
+<br><br>如無法獲取驗証碼，你仍可以書面向行政主任(人事)5申請手動重設密碼 ，並附上以下資料以供處理。
+
+<br><br>- 英文全名
+<br>- 身份證上首個英文字母及其後三個數目字[即A123***(*)]
+<br>- 診所/辦公室
+<br>- 服務單位
+<br>- 職級
+<br>- 聯絡電話
+<br>- 電郵地址
+
+<br><br>傳真號碼：2116 3796
+<br>Lotus Notes 電郵: eo_per5@dh.gov.hk
+
+<br><br>如有疑問 ，請致電3107 2517與助理文書主任(人事)71聯絡。
+
+                                </td></tr>
+              <tr><!---- Hidden field to identify forward/reverse proxy path ------>
+                  <input name="proxypath" value="&lt;PROXY_PATH&gt;" type="hidden">
+                  <input name="url" value="&lt;ERROR_INFORMATION&gt;" type="hidden">
+                                  <td valign="bottom" width="544">
+                  <div align="left"><font size="2"><a href="#" onclick="javascript:history.go(-1)"><img border="0" src="images/relogin.gif" width="101" height="36"></a><br><br></font>
+                  </div></td></tr>
+              </tbody>
+            </table></div></td>
+          <td valign="middle" width="211"><blockquote><div align="center"></div></blockquote></td></tr>
+        <tr><td colspan="3"><img src="images/footer.jpg" width="700" height="50"></td></tr>
+          </tbody></table>
+                  </td></tr></tbody></table>
+</form>
+
+</body></html>

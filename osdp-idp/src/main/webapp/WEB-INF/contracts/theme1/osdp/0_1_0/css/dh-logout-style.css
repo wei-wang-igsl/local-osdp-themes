@@ -1,0 +1,26 @@
+.hide {
+    display: none;
+}
+
+.dh-idp-logout
+{
+    display: table;
+}
+
+.dh-idp-logout-left,
+.dh-idp-logout-right
+{
+    display: table-cell;
+}
+
+.dh-idp-logout-left
+{
+    width: 310px;
+    vertical-align: top;
+}
+
+.dh-idp-logout-right
+{
+    width: 390px;
+    vertical-align: middle;
+}

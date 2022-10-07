@@ -1,0 +1,18 @@
+body {	
+	background-image: url(../img/background.jpg);
+}
+
+header{
+	text-align: center;
+}
+
+footer{
+	background: unset;
+	text-align: center;
+}
+
+form
+{
+	width: 700px !important;
+	background:white;
+}

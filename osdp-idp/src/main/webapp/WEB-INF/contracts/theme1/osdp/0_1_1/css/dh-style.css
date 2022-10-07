@@ -1,0 +1,102 @@
+body {	
+	background-image: url(/idp/profile/javax.faces.resource/img/background.jpg?ln=osdp&v=0_1_0&con=theme1);
+}
+
+header{
+	text-align: center;
+}
+
+footer{
+	background: none;
+	text-align: center;
+}
+
+form {width: unset;}
+
+.idp-login-service-legend
+{
+	font-size: x-small;
+	font-family: Verdana;
+	margin-top: 40px;
+}
+
+.idp-login-content
+{
+	width: 700px;
+}
+
+.idp-login-content > form
+{
+	display: block;
+}
+
+.idp-login-form-label,
+.idp-login-form-input,
+.idp-login-button
+{
+	float: none;
+	padding: 0;
+	display: block;
+	text-align: justify;
+	width:auto;
+}
+
+form label
+{
+	font-size: 16px;
+	font-weight: normal;
+	font-family: 'Times New Romand';
+	margin-bottom: unset;
+}
+
+.center-block.md
+{
+	max-width: 700px;
+	background-color: white;
+}
+
+.dh-row{ display: table-row; }
+.dh-cell{ display: table-cell; }
+
+.dh-idp-left
+{
+	width: 390px;
+    vertical-align: top;
+	padding-left: 5px;
+}
+.dh-idp-right
+{
+	width: 300px;
+    text-align: center;
+	vertical-align: middle;
+}
+
+.dh-loginbnd
+{
+	margin-top: 13px;
+}
+
+.dh-idp-font
+{
+	font-size: xx-small;
+	width: 390px;
+}
+
+/*.idp-login-forget-password
+{display: none;}*/
+
+.idp-login-form-input > input
+{
+	width:180px;
+	height:22px;
+}
+
+.dh-idp-enquiry
+{
+	margin-bottom: 15px;
+}
+
+.idp-login-button > input[type='button']
+{
+	font-size: small;
+}

@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<AppList xmlns="dpapplist"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+         xsi:schemaLocation="dpapplist dpapplist.xsd" type="production" usedfor="crossdomain" solution="any">
+<dp_app>
+	<dp_app_desc>Storage Allocation and Records Centre Information System (SARCIS) *</dp_app_desc>
+	<dp_app_url>https://ssp.cso.ccgo.hksarg/sarcis/dpUser/request</dp_app_url>  
+	<dp_domain_abbr>CSO_SSP_SP</dp_domain_abbr>
+	<dp_project_ext>false</dp_project_ext>
+	<dp_app_visualfor>all</dp_app_visualfor>
+</dp_app>
+
+<dp_app>
+	<dp_app_desc>e-Payroll</dp_app_desc>
+	<dp_app_url>https://ssp.try.ccgo.hksarg/epay</dp_app_url>  
+	<dp_domain_abbr>TRY_SSP_SPH</dp_domain_abbr>
+	<dp_project_ext>false</dp_project_ext>
+	<dp_app_visualfor>all</dp_app_visualfor>
+</dp_app>
+
+<dp_app>
+	<dp_app_desc>e-Who's Who - Treasury Grades Officers</dp_app_desc>
+	<dp_app_url>https://ssp.try.ccgo.hksarg/eww</dp_app_url>  
+	<dp_domain_abbr>TRY_SSP_SPH</dp_domain_abbr>
+	<dp_project_ext>false</dp_project_ext>
+	<dp_app_visualfor>all</dp_app_visualfor>
+</dp_app>
+
+<dp_app>
+	<dp_app_desc>Government Financial Management Repository (GFMR)</dp_app_desc>
+	<dp_app_url>https://ssp.try.ccgo.hksarg/gfmr</dp_app_url>  
+	<dp_domain_abbr>TRY_SSP_SPH</dp_domain_abbr>
+	<dp_project_ext>false</dp_project_ext>
+	<dp_app_visualfor>all</dp_app_visualfor>
+</dp_app>
+
+<dp_app>
+	<dp_app_desc>TREASURY Page</dp_app_desc>
+	<dp_app_url>https://ssp.try.ccgo.hksarg/intranet</dp_app_url>  
+	<dp_domain_abbr>TRY_SSP_SPH</dp_domain_abbr>
+	<dp_project_ext>false</dp_project_ext>
+	<dp_app_visualfor>all</dp_app_visualfor>
+</dp_app>
+
+<dp_app>
+	<dp_app_desc>Fees and Charges Review System (FCRS) *</dp_app_desc>
+	<dp_app_url>https://dp2.fstb.ccgo.hksarg/fcrs/LoginForm.jsp</dp_app_url>  
+	<dp_domain_abbr>FSTB_SSP_SP</dp_domain_abbr>
+	<dp_project_ext>false</dp_project_ext>
+	<dp_app_visualfor>all</dp_app_visualfor>
+</dp_app>
+
+<dp_app>
+	<dp_app_desc>Public Works Projects Location Plan Register (PWPLPR)</dp_app_desc>
+	<dp_app_url>https://dp2.devbwb.ccgo.hksarg/pwplpr</dp_app_url>  
+	<dp_domain_abbr>DEVB_SSP_SP</dp_domain_abbr>
+	<dp_project_ext>false</dp_project_ext>
+	<dp_app_visualfor>all</dp_app_visualfor>
+</dp_app>
+
+<dp_app>
+	<dp_app_desc>Contract Staff Administration System (CSAS)</dp_app_desc>
+	<dp_app_url>https://dp2.ogcio.ccgo.hksarg/dpcsa3/csa2/common/CCGOEntryServlet</dp_app_url>  
+	<dp_domain_abbr>OGCIO_SSP_SP</dp_domain_abbr>
+	<dp_project_ext>false</dp_project_ext>
+	<dp_app_visualfor>all</dp_app_visualfor>
+</dp_app>
+
+<dp_app>
+	<dp_app_desc>e-ACPC System</dp_app_desc>
+	<dp_app_url>https://dp2.ogcio.ccgo.hksarg/gipmshttp/GIPMS/faf/NewProject.jsp</dp_app_url>  
+	<dp_domain_abbr>OGCIO_SSP_SP</dp_domain_abbr>
+	<dp_project_ext>false</dp_project_ext>
+	<dp_app_visualfor>all</dp_app_visualfor>
+</dp_app>
+
+<dp_app>
+	<dp_app_desc>GCIS Self Service Portal (GCIS SSP)</dp_app_desc>
+	<dp_app_url>https://dp2.ogcio.ccgo.hksarg/gcis_p2/</dp_app_url>  
+	<dp_domain_abbr>OGCIO_SSP_SP</dp_domain_abbr>
+	<dp_project_ext>false</dp_project_ext>
+	<dp_app_visualfor>all</dp_app_visualfor>
+</dp_app>
+
+<dp_app>
+	<dp_app_desc>Government Common Applications System (GCAS)</dp_app_desc>
+	<dp_app_url>https://dp2.ogcio.ccgo.hksarg/gcas/webgcas/authorization.jsp</dp_app_url>  
+	<dp_domain_abbr>OGCIO_SSP_SP</dp_domain_abbr>
+	<dp_project_ext>false</dp_project_ext>
+	<dp_app_visualfor>all</dp_app_visualfor>
+</dp_app>
+
+<dp_app>
+	<dp_app_desc>Government Technology and System Architectures (GTSA) Repository *</dp_app_desc>
+	<dp_app_url>https://dp2.ogcio.ccgo.hksarg/gtsa/GTSA</dp_app_url>  
+	<dp_domain_abbr>OGCIO_SSP_SP</dp_domain_abbr>
+	<dp_project_ext>false</dp_project_ext>
+	<dp_app_visualfor>all</dp_app_visualfor>
+</dp_app>
+</AppList>

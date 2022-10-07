@@ -18,20 +18,24 @@
 		var host = window.location.host;
 		var pathname = window.location.pathname;
 		var search = window.location.search;
-		
-		$(document).ready(function(){
-					
+
+		window.onload = function(){
+        	window.location.href += 'applist/index_app.html';
+        };
+
+		/*$(document).ready(function(){
+			window.location.href = window.location.href + 'applist/index_app.html';		
 			if (host.includes("ccgo")==true){
 				$("a[href='http://www.google.com']").prop('href', 'https://idp.test.org/idp/profile/SAML2/Unsolicited/SSO?providerId=https%3A%2F%2Fsp.test.org%2Fshibboleth&target=https%3A%2F%2Fsp.test.ccgo.org%2Fapplist')
 			} else {
 				$("a[href='http://www.google.com']").prop('href', 'https://idp.test.org/idp/profile/SAML2/Unsolicited/SSO?providerId=https%3A%2F%2Fsp.test.org%2Fshibboleth&target=https%3A%2F%2Fsp.test.org%2Fapplist')
 			}
-        });
+        });*/
 
 		</script>
 		
     </head>
-<body>
+<body style="display: none">
 	<div id="wrapper" class="clearfix">
       <div id="container" class="clearfix">
 		<header>

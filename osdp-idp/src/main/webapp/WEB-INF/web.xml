@@ -5,7 +5,7 @@
     <display-name>Shibboleth Identity Provider</display-name>
 
     <!-- Spring application context files. Files are loaded in the order they appear with subsequent files overwriting
-                 same named beans in previous files. -->
+        same named beans in previous files. -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath*:/META-INF/net.shibboleth.idp/preconfig.xml,classpath:/net/shibboleth/idp/conf/global-system.xml,${idp.home}/conf/global.xml,classpath*:/META-INF/net.shibboleth.idp/postconfig.xml</param-value>
@@ -243,13 +243,13 @@
     </security-constraint>
 
     <!--
-             Uncomment to use container managed authentication. The new servlet spec (3.1)
+    Uncomment to use container managed authentication. The new servlet spec (3.1)
     supports "**" as a wildcard syntax to avoid role usage, which is normally desirable.
     Older containers usually support "*" when proprietary options are used (e.g., Jetty
     requires setting the Strict property on the SecurityManager.)
     -->
     <!--
-             <security-constraint>
+    <security-constraint>
         <display-name>Web Login Service</display-name>
         <web-resource-collection>
             <web-resource-name>user authentication</web-resource-name>
@@ -268,21 +268,21 @@
 
     <!-- Uncomment if you want BASIC auth managed by the container. -->
     <!--
-             <login-config>
+    <login-config>
         <auth-method>BASIC</auth-method>
         <realm-name>Web Login Service</realm-name>
     </login-config>
     -->
 
     <!--
-             Uncomment if you want form-based auth managed by the container.
+    Uncomment if you want form-based auth managed by the container.
     NOTE that the default form-login UI in the IdP is not compatible
     with this option, and you will need to supply your own JSP form
     and error page. This is not a recommended approach and is severely
     limited in functionality as compared to using the IdP's own UI.
     -->
     <!--
-             <login-config>
+    <login-config>
         <auth-method>FORM</auth-method>
         <realm-name>Web Login Service</realm-name>
         <form-login-config>

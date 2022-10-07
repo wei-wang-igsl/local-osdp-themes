@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>DH Departmental Portal - Index Page</title>
+
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16555">
+<style type="text/css">.formhead {
+        TEXT-ALIGN: left; LINE-HEIGHT: 1.2em; BACKGROUND-COLOR: #6b8899; TEXT-INDENT: 0.5em; LETTER-SPACING: 0.1em; FONT-FAMILY: "Trebuchet MS", Arial, Helvetica, Geneva, Swiss, SunSans-Regular; COLOR: white; FONT-SIZE: 1em; VERTICAL-ALIGN: middle; FONT-WEIGHT: bold
+}
+.formdescriptext {
+        FONT-FAMILY: "Trebuchet MS", Arial, Helvetica, Geneva, Swiss, SunSans-Regular; COLOR: #355263; FONT-SIZE: 0.8em
+}
+.formeg {
+        FONT-FAMILY: "Trebuchet MS", Arial, Helvetica, Geneva, Swiss, SunSans-Regular; COLOR: #355263; FONT-SIZE: 1.2em; FONT-WEIGHT: bold
+}
+.smalltext {
+        LINE-HEIGHT: 1.2em; FONT-FAMILY: "Trebuchet MS", Arial, Helvetica, Geneva, Swiss, SunSans-Regular; FONT-SIZE: 0.6em
+}
+.mediumtext {
+        LINE-HEIGHT: 1em; FONT-FAMILY: "Trebuchet MS", Arial, Helvetica, Geneva, Swiss, SunSans-Regular; FONT-SIZE: 0.85em
+}
+.buttontext {
+        BACKGROUND-COLOR: #dfddd5; FONT-FAMILY: "Trebuchet MS", Arial, Helvetica, Geneva, Swiss, SunSans-Regular; HEIGHT: 25px; COLOR: #4a4947; FONT-SIZE: 0.65em; FONT-WEIGHT: bold
+}
+.whitespace {
+        COLOR: white
+}
+.rule {
+        BACKGROUND-COLOR: #6b8899; FONT-SIZE: 0.1em
+}
+</style>
+
+<script src="./js/jquery-3.5.1.min.js"></script>
+
+<script javascript="">
+
+function openUrl(url, idp)
+{
+	if(idp)
+		window.location.href = "https://" + window.location.hostname.replace('dsp','idp') + url;
+	else
+		window.location.href = "https://" + window.location.hostname + url;
+}
+
+function launchApp(url)	{
+	if (chkURL("ccgo") >=0)
+		url = url.replace("dh.hksarg","dh.ccgo.hksarg");
+	window.open(url,"SubWindow","width=1024,height=768,resizable=yes,scrollbars=yes"); 
+}
+
+function ccgoUrl(url)
+{
+	return url.replace(".dh.hksarg",".dh.ccgo.hksarg");
+}
+
+function chkURL(p1) {
+        var url = window.location.href;
+        var str = p1;
+
+        url = url.toLowerCase( );
+        var s = url.indexOf(p1);
+
+        return(s);
+}
+
+function openWin(url) {
+        var p1 = 0;        //(internet application list)
+        // p1 = 1        (intranet application list)
+        //var h = screen.availHeight-10;
+        //var w = screen.availWidth-20;
+        var h = 580;
+        var w = 790;
+        //var features = "toolbar=0,location=0,directories=0,status=1,menubar=0,scrollbars=1,resizable=1,width="+w+", height="+h+",top=0,left=0";
+        var features = "toolbar=0,location=0,directories=0,status=1,menubar=0,scrollbars=1,resizable=1,width="+w+", height="+h+",,";
+
+        if (p1 == 0) {
+                if (chkURL("ccgo") >=0)
+                        window.open(ccgoUrl(url), "_blank", features);
+                else
+                        window.open(url, "_blank", features);
+        } else
+                window.open(url, "_blank", features);
+}
+
+function openWin2(url) {
+        var p1 = 0;        //(internet application list)
+        // p1 = 1        (intranet application list)
+        //var h = screen.availHeight-10;
+        //var w = screen.availWidth-20;
+        var h = 748;
+        var w = 1014;
+        //var h = 580;
+        //var w = 790;
+
+                //var features = "toolbar=0,location=0,directories=0,status=1,menubar=0,scrollbars=1,resizable=1,width="+w+", height="+h+",top=0,left=0";
+        var features = "toolbar=0,location=0,directories=0,status=1,menubar=0,scrollbars=1,resizable=1,width="+w+", height="+h+",,";
+        //var features = "toolbar=0,location=0,directories=0,status=1,menubar=0,scrollbars=1,resizable=1,fullscreen=1";
+
+        if (chkURL("ccgo") >=0)
+			window.open(ccgoUrl(url), "_blank", features);
+        else
+			window.open(url, "_blank", features);
+}
+
+
+function openWin3(url) {
+        var p1 = 0;        //(internet application list)
+        // p1 = 1        (intranet application list)
+        //var h = screen.availHeight-10;
+        //var w = screen.availWidth-20;
+        var h = 580;
+        var w = 790;
+        //var features = "toolbar=0,location=0,directories=0,status=1,menubar=0,scrollbars=1,resizable=1,width="+w+", height="+h+",top=0,left=0";
+        var features = "toolbar=0,location=0,directories=0,status=1,menubar=0,scrollbars=1,resizable=1,width="+w+", height="+h+",,";
+
+        if (p1 == 0) {
+                if (chkURL("ccgo") >=0)
+                        window.open("https://" + ccgoUrl(url), "_blank", features);
+                else
+                        window.open("https://" + url, "_blank", features);
+        } else
+                window.open("https://" + url, "_blank", features);
+}
+
+// Begin DH - Password Expiration Checking
+function onloadEvt() {
+	var winUrl = window.location.href;
+	var contextName = "applist";
+	var contextNameIndex = winUrl.indexOf(contextName);
+	var appListServletUrl = winUrl.substring(0, contextNameIndex + contextName.length) + '/AppListServlet';
+
+	$.ajax({
+		type: "GET",
+		dataType: "json",
+		url: appListServletUrl,
+		data: {},
+		success : pwdExpirChecking
+	});
+};
+
+function pwdExpirChecking(json)
+{
+	if(json.passwordExpirationDays != undefined && json.passwordExpirationDays <= 30)
+	{
+		window.location.href = '/OSDP_SS/xhtml/home/changePassword.xhtml?pwdExpir=1';
+	}
+}
+
+// End DH - Password Expiration Checking
+
+</script>
+
+</head>
+
+<body onload="onloadEvt()" background="./images/background.jpg" alink="#ff6600" leftmargin="0" topmargin="0" vlink="#ff6600" link="#ff6600" marginheight="0" marginwidth="0">
+<form>
+<table border="0" cellspacing="0" cellpadding="0" width="700" bgcolor="#ffffff" align="center">
+  <tbody>
+  <tr>
+    <td><img src="./images/header.png" width="700" height="83">
+      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+        <tbody>
+        <tr valign="top">
+          <td height="299"><br>
+            <div align="center">
+            <table border="0" cellspacing="0" cellpadding="0" width="600">
+              <tbody>
+              <tr>
+                <td><img src="./images/IndexBnd.gif" width="294" height="32">
+                </td>
+                <td>
+                  <div align="right"><font size="2" face="Verdana"><a href="#" onclick="javascript:openUrl('/idp/profile/Logout', true)">Logout[登出]</a></font></div></td></tr></tbody></table>
+
+            <table border="0" cellspacing="20" cellpadding="0" width="600">
+              <tbody>
+              <tr>
+                <td valign="top" align="right"><img alt="e-Payroll &amp; Benefits" src="./images/epayroll.jpg" width="50" height="50">
+                                  <br><br><br></td>
+                <td height="80" width="85%">
+                  <!--<P><A href="#" onclick="javascript:alert('TRY Policy : Epayroll only release Production when in rollout date. It cannot be tested in UAT stage')">-->
+<table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td>
+
+                                  <a href="#" onclick="javascript:openWin('https://idp.dh.hksarg/idp/profile/SAML2/Unsolicited/SSO?providerId=https%3A%2F%2Fssp.try.hksarg%2Fsph%2FMetadata&target=https%3A%2F%2Fssp.try.ccgo.hksarg%2Fepay')">
+                  <font size="2" face="Verdana">e-Payroll and Benefits</font></a>
+                                  <br>
+                                  <a href="#" onclick="javascript:openWin('https://idp.dh.hksarg/idp/profile/SAML2/Unsolicited/SSO?providerId=https%3A%2F%2Fssp.try.hksarg%2Fsph%2FMetadata&target=https%3A%2F%2Fssp.try.ccgo.hksarg%2Fepay')">
+                  <font size="2" face="Verdana">電子薪俸與福利</font></a>
+                                  <br>
+
+</td>
+
+
+<td>
+                  <a href="#" onclick="javascript:window.location.href = window.location.origin + '/applist/Enquiry.html'"><img border="0" width="25" height="21" src="./images/enquiry.jpg"></a>
+</td></tr>
+</tbody></table>
+                  <br><a href="index_files/ePayroll.pdf" target="_blank"><font size="2" face="Verdana">電子薪俸記錄系統(e-Payroll)使用指引</font></a>
+                  <br><a href="index_files/ePayroll(e).pdf" target="_blank"><font size="2" face="Verdana">Guideline on e-Payroll</font></a>
+                  <br>
+                                  </td>
+                </tr>
+
+              <tr>
+                <td valign="top" align="right"><img alt="e-Leave" src="./images/eleave.gif" width="50" height="50">
+                                  <br><br><br></td>
+                <td height="80" width="85%">
+<table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td>
+                                  <a href="#" onclick="javascript:openWin3(&#39;dsp.dh.hksarg/elaps/DPEntry/DH&#39;)">
+                  <font size="2" face="Verdana">e-Leave</font></a>
+                                  <br>
+                                  <a href="#" onclick="javascript:openWin3(&#39;dsp.dh.hksarg/elaps/DPEntry/DH&#39;)">
+                  <font size="2" face="Verdana">電子處理假期申請系統</font></a>
+</td><td>
+                  <a href="#" onclick="javascript:window.location.href = window.location.origin + '/applist/Enquiry.html'"><img border="0" width="25" height="21" src="./images/enquiry.jpg"></a>
+</td></tr>
+</tbody></table>
+                                  <br><a href="https://itginfo.ccgo.hksarg/content/neweleave/training_cn.asp" target="_blank"><font size="2" face="Verdana">電子處理假期申請系統(e-Leave)使用指引</font></a>
+                  <br><a href="https://itginfo.ccgo.hksarg/content/neweleave/training_en.asp" target="_blank"><font size="2" face="Verdana">Guideline on e-Leave</font></a>
+                  <br>
+                                  <br>
+                                  </td></tr>
+              <tr>
+                <td valign="top" align="right"><img alt="e-Procurement" src="./images/eProcurement.gif" width="50" height="50">
+                                  <br><br></td>
+                <td height="80" width="85%">
+<table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td>
+
+<a href="#" onclick="javascript:openWin2(&#39;https://cdsso.csp.ccgo.hksarg/sso/ssoservice.jsp?TARGET=https%3A%2F%2Fidp.dh.hksarg%2Fidp%2Fprofile%2FSAML2%2FUnsolicited%2FSSO%3FproviderId%3DPRDCSPCDSP4%26target%3Dhttps%253A%252F%252Feprocurement.csp.ccgo.hksarg%253A443%252Feprocurement&#39;)">
+
+
+                <font size="2" face="Verdana">e-Procurement System</font></a>
+                                  <br>
+        <a href="#" onclick="javascript:openWin2(&#39;https://cdsso.csp.ccgo.hksarg/sso/ssoservice.jsp?TARGET=https%3A%2F%2Fidp.dh.hksarg%2Fidp%2Fprofile%2FSAML2%2FUnsolicited%2FSSO%3FproviderId%3DPRDCSPCDSP4%26target%3Dhttps%253A%252F%252Feprocurement.csp.ccgo.hksarg%253A443%252Feprocurement&#39;)">
+
+        <font size="2" face="Verdana">採購通</font></a>
+</td><td>
+                  <a href="#" onclick="javascript:window.location.href = window.location.origin + '/applist/Enquiry.html'"><img border="0" width="25" height="21" src="./images/enquiry.jpg"></a>
+</td></tr>
+</tbody></table>
+                                  <br><a href="index_files/User%20Manual%20-%20IT%20SOA%201.7.pdf" target="_blank"><font size="2" face="Verdana">Guideline on e-Procurement(English Version only)</font></a>
+                  <br></td></tr>
+
+				 <!-- 
+                                  <!-- -->
+                           <!--    <TD valign=top align=right><IMG alt=new_icon_1436524122 src="index.files/new_icon_1436524122.gif" width=50 height=50>
+                                  <br><br></TD>
+                <TD height=80 width="85%">
+<TABLE border=0 cellSpacing=0 cellPadding=0><tr><td>
+                                  <A href="index.files/2019_DCE-Recruitment_Circular_and_Duty_List_English.pdf" target=_blank><FONT size=2 face=Verdana>Recruitment of Electoral Staff for 2019 District Council Ordinary Election</font></A>
+                                  <br>
+                                  <A href="index.files/2019_DCE-Annex_II_Application_Form.pdf" target=_blank><FONT size=2 face=Verdana>Application For</font></A>
+</td>
+</tr>
+</TABLE>
+<TABLE border=0 cellSpacing=0 cellPadding=0><tr><td>
+                                  <BR><A href="index.files/2019_DCE-Recruitment_Circular_and_Duty_List_Chinese.pdf" target=_blank><FONT size=2 face=Verdana>招募選舉工作人員 - 二零一九年區議會一般選舉</font></A>
+                                                                  <br>
+                                  <A href="index.files/2019_DCE-Annex_II_Application_Form.pdf" target=_blank><FONT size=2 face=Verdana>申請表格</font></A>
+                  <BR></TD></TR>
+</td>
+</tr>
+</TABLE> 
+-->
+                                  
+				  
+				  
+<!-- 
+<TD valign=top align=right><IMG alt=new_icon_1436524122 src="./images/new_icon_1436524122.gif" width=50 height=50>
+<br><br></TD>
+<TD height=80 width="85%">
+<TABLE border=0 cellSpacing=0 cellPadding=0><tr><td>
+<A href="https://rre.had.ccgo.hksarg/application/" target=_blank><FONT size=2 face=Verdana>Recruitment of Electoral Staff for the 2023 Rural Ordinary Election (Online application only)</font></A>
+<br>
+<A href="https://rre.had.ccgo.hksarg/application/" target=_blank><FONT size=2 face=Verdana>Application Link</font></A>
+</td>
+</tr>
+</TABLE>
+<TABLE border=0 cellSpacing=0 cellPadding=0><tr><td>
+<BR><A href="https://rre.had.ccgo.hksarg/application/" target=_blank><FONT size=2 face=Verdana>招募選舉工作人員 - 2023年鄉郊一般選舉 (只接受網上申請)</font></A>
+<br>
+<A href="https://rre.had.ccgo.hksarg/application/" target=_blank><FONT size=2 face=Verdana>申請連結</font></A>
+<BR></TD></TR>
+</td>
+</tr>
+</TABLE> 
+
+-->				  
+				  
+				  
+				  
+                <tr>
+                  <td valign="top">
+                  <div valign="top"><img alt="Other Application" src="./images/palm.png" width="80" height="60"></div></td>
+                <td height="80" width="85%" valign="top">
+
+                                  <a href="#" onclick="javascript:openUrl('/applist/applist.html', false)">
+                  <font size="2" face="Verdana">Other Application List</font></a>
+
+                 
+                  <br>
+                                  <a href="#" onclick="javascript:openUrl('/applist/applist.html', false)">
+                  <font size="2" face="Verdana">其他應用系統列表</font></a>
+                                  <p></p>
+
+                                  </td></tr>
+                                  <!--
+                                  OSDP DO NOT ENABLE OLD DP TO CHANGE PASSWORD TO AVOID DATA DIFF. USER MUST CHANGE IN OSDP PORTAL
+                                  -->
+              <tr>
+                <td valign="top">
+                  <div valign="top"><img src="./images/key.png" width="80" height="60"></div></td>
+                <td valign="top" height="80" width="85%">
+
+		<a href="#" onclick="javascript:launchApp('/OSDP_SS/xhtml/home/changePassword.xhtml')">
+                  <font size="2" face="Verdana">Click here to change password</font></a>
+                                  <br>
+                <a href="#" onclick="javascript:launchApp('/OSDP_SS/xhtml/home/changePassword.xhtml')">
+                  <font size="2" face="Verdana">請按此處更改密碼</font></a>
+<br></td></tr>
+            </tbody></table></div></td></tr>
+        <tr><td><img src="./images/footer.jpg" width="700" height="50"></td></tr>
+     </tbody></table></td></tr></tbody></table></form>
+
+</body></html>

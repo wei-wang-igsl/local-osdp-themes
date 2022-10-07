@@ -1,0 +1,91 @@
+<!DOCTYPE html [
+    <!ENTITY nbsp "&#160;"> 
+]>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+  <f:view>
+    <h:head>
+      <ui:insert name="metadata" />
+      <meta charset="utf-8" />
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta http-equiv="cache-control" content="no-cache" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      <title>#{title}</title>
+	  <script type="text/javascript">	  
+		function chkURL(p1) {
+			var url = window.location.href;
+			var str = p1;
+
+			url = url.toLowerCase( );
+			var s = url.indexOf(p1);
+
+			return(s);
+		}
+
+		function reLogin()
+		{
+			if(chkURL("ccgo") > 0)
+				window.location.href = "https://dsp.dh.ccgo.hksarg";
+			else
+				window.location.href = "https://dsp.dh.hksarg";
+		}
+	  </script>
+
+      <h:outputStylesheet library="osdp" name="css/admin.css"/>
+      <h:outputStylesheet library="osdp" name="css/main.css"/>
+      <h:outputStylesheet library="osdp" name="css/leftmenu.css"/>
+      <h:outputStylesheet library="osdp" name="css/style.css"/>
+      <h:outputStylesheet library="osdp" name="css/cus.css"/>
+      <h:outputStylesheet library="osdp" name="css/idp.css"/>
+      <h:outputStylesheet library="osdp" name="css/dh-style.css"/>
+      <h:outputStylesheet library="osdp" name="css/dh-logout-style.css"/>
+    </h:head>
+    <h:body>
+      <div id="wrapper" class="clearfix">
+        <div id="container" class="clearfix">
+          <div id="header">
+            <ui:include src="header.xhtml" />
+          </div>
+          <div id="main-content-container">
+            <div id="content" class="clearfix center">
+              <div class="center-container">
+				<div class="dh-idp-loggingout hide">
+					Log out in progress...
+				</div>
+				<div class="dh-idp-logout hide">
+					<div class="dh-idp-logout-left">
+						<p>You are now logged out</p>
+						<p>您現在已經登出</p>
+						<p>Please close your browser window</p>
+						<p>請關閉瀏覽器窗口</p>
+						<p>Thank you for using DH Departmental Portal</p> 
+						<p>感謝您使用衞生署入門網站</p>
+						<div class="dh-idp-logout-img">
+							<a href="#" onclick="reLogin()" target="_self">
+								<h:graphicImage name="img/relogin.gif" library="osdp" />
+							</a>
+						</div>
+					</div>
+					<div class="dh-idp-logout-right">
+						<h:graphicImage name="img/SPLASH.jpg" library="osdp" />
+					</div>
+				</div>
+                <div class="form-horizontal center-block md">
+                  <ui:insert name="content" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <footer>
+            <div id="footer">
+              <ui:include src="footer.xhtml" />
+            </div>
+          </footer>
+        </div>
+      </div>
+    </h:body>
+  </f:view>
+</html>

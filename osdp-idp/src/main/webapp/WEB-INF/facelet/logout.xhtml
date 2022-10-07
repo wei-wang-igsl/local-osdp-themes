@@ -5,7 +5,7 @@
   xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
   <h:body>
     <f:view contracts="#{resourceBundle['osdp.theme']}">
-      <ui:composition template="/WEB-INF/#{resourceBundle['osdp.theme']}/template/template.xhtml">
+      <ui:composition template="/WEB-INF/#{resourceBundle['osdp.theme']}/template/template_logout.xhtml">
         <ui:param name="title" value="#{resourceBundle['idp.logout.title']}"/>
         <ui:define name="content">
           <div class="idp-logout-content">
@@ -15,13 +15,14 @@
                 var buttonPressed = false;
 
                 window.addEventListener('load', function() {
+                  document.getElementsByClassName("dh-idp-loggingout")[0].classList.remove("hide");
                   setTimeout(function() {
                     if (buttonPressed) return;
 
                     buttonPressed = true;
 
                     location.href = "#{flowExecutionUrl}&_eventId=propagate&javax.faces.ViewState=dummy";
-                  }, 10000);
+                  }, 1500);
                 });
 
                 function propagate() {
@@ -45,11 +46,16 @@
 
             <c:choose>
               <c:when test="#{not empty logoutContext and not logoutContext.sessionMap.isEmpty()}">
-               <ol type="i">
-                 <li style="margin-bottom: 1em;"><h:outputText value="#{resourceBundle['idp.logout.ask']}" escape="false"/></li>
-                 <li><h:outputText value="#{resourceBundle['idp.logout.contactServices']}" escape="false"/></li>
-               </ol>
-      
+                <p><h:outputText value="#{resourceBundle['idp.logout.ask']}" escape="false"/></p>
+                <br/>
+
+                <h:form id="inputForm">
+                  <h:commandButton id="propagate_yes" type="button" value="Yes" onclick="propagate()"/>
+                  <h:commandButton id="propagate_no" type="button" value="No" onclick="end()"/>
+                </h:form>
+
+                <br/>
+                <p><h:outputText value="#{resourceBundle['idp.logout.contactServices']}" escape="false"/></p>
                 <ol class="idp-logout-sp-list">
                   <c:forEach var="sp" items="#{logoutContext.sessionMap.keySet()}">
                     <c:set var="rpCtx" value="#{multiRPContext.getRelyingPartyContextById(sp)}"/>
@@ -66,13 +72,6 @@
                     </c:choose>
                   </c:forEach>
                 </ol>
-                <br />
-                <h:form id="inputForm">
-                  <h:commandButton id="propagate_yes" type="button" value="Yes" onclick="propagate()"/>
-                  <h:commandButton id="propagate_no" type="button" value="No" onclick="end()"/>
-                </h:form>
-                <br />
-                <p><h:outputText value="#{resourceBundle['idp.logout.button.desc']}" escape="false"/></p>
 
                 <h:form id="propagateForm" style="display:none;">
                   <h:commandButton id="submitButton" action="propagate"/>
@@ -83,6 +82,11 @@
                 </h:form>
               </c:when>
               <c:otherwise>
+              <script type="text/javascript">
+                <!--//--><![CDATA[//><!--
+                document.getElementsByClassName("dh-idp-logout")[0].classList.remove("hide");
+                //--><!]]>
+              </script>
                 <p><h:outputText value="#{resourceBundle['idp.logout.complete']}" escape="false"/></p>
                 <!-- Complete the flow by adding a hidden iframe. -->
                 <iframe style="display:none" src="#{flowExecutionUrl}&amp;_eventId=proceed&amp;javax.faces.ViewState=dummy"></iframe>

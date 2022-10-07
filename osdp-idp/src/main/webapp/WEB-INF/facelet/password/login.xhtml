@@ -9,6 +9,8 @@
         <ui:param name="title" value="#{resourceBundle['password.login.title']}"/>
         <ui:define name="content">
           <div class="idp-login-content">
+			<div class="dh-row">
+			<div class="dh-cell dh-idp-left">
             <script type="text/javascript">
               <!--//--><![CDATA[//><!--
               var buttonPressed = false;
@@ -25,6 +27,12 @@
                 toForm['j_password'].value = fromForm['inputForm:password'].value;
                 toForm['submitForm:loginButton'].click();
               }
+			  
+			  window.addEventListener("keyup", function(e){
+                  if(e.keyCode == 13){
+                      login();
+                  }
+              })
               //--><!]]>
             </script>
 
@@ -54,16 +62,17 @@
             </c:if>
 
             <c:set var="serviceName" value="#{rpUIContext.serviceName}"/>
-            <c:if test="#{not empty serviceName and not profileRequestContext.getSubcontext('net.shibboleth.idp.profile.context.RelyingPartyContext').getRelyingPartyId().contains(serviceName)}">
+            
+              <h:graphicImage name="img/LoginBnd.gif" library="osdp" styleClass="dh-loginbnd" />
               <div class="idp-login-service-legend">
                 <h:outputText value="#{resourceBundle['password.login.login.to.prefix']}" escape="false"/>
-                <span class="idp-login-service-name">#{serviceName}</span>
+                <h:graphicImage name="img/Login1.gif" library="osdp" />
               </div>
-            </c:if>
+           
 
             <h:form id="inputForm">
               <div class="idp-login-form-label">
-                <h:outputLabel id="usernameLabel" for="username" value="#{resourceBundle['password.login.username.label']}" escape="false"/>*
+                <h:outputLabel id="usernameLabel" for="username" value="#{resourceBundle['password.login.username.label']}" escape="false"/>
               </div>
               <div class="idp-login-form-input">
                 <h:inputText id="username" size="30" maxlength="50" value="#{authenticationContext.getSubcontext('net.shibboleth.idp.authn.context.UsernamePasswordContext', true).username}">
@@ -71,7 +80,7 @@
                 </h:inputText>
               </div>
               <div class="idp-login-form-label">
-                <h:outputLabel id="passwordLabel" for="password" value="#{resourceBundle['password.login.password.label']}" escape="false"/>*
+                <h:outputLabel id="passwordLabel" for="password" value="#{resourceBundle['password.login.password.label']}" escape="false"/>
               </div>
               <div class="idp-login-form-input">
                 <h:inputSecret id="password" size="30" value="">
@@ -81,7 +90,16 @@
               <div class="idp-login-button">
                 <h:commandButton type="button" value="#{resourceBundle['password.login.submit.button.text']}" onclick="login()"/>
               </div>
+			  <div class="dh-idp-font">
+				<h:outputText value="You are required to change your password every 3 months pursuant to the latest security requirements." escape="false"/>
+			  </div>
             </h:form>
+			
+			<div class="dh-idp-enquiry">
+				<a href="#" onclick="javascript:window.location.href = window.location.origin.replace('idp','dsp') + '/CONTACT.HTM'">
+					<h:graphicImage name="img/wrongpwd.gif" library="osdp" />
+				</a>
+			</div>
 
             <div class="idp-login-forget-password">
               <h:outputLink value="#{resourceBundle['password.login.forget.password.url_'.concat(request.serverName)]}">
@@ -96,6 +114,11 @@
               <h:commandButton id="loginButton" action="proceed"/>
             </h:form>
           </div>
+		  <div class="dh-cell dh-idp-right">
+      <h:graphicImage name="img/SPLASH.jpg" library="osdp" />
+		  </div>
+		  </div>
+		  </div>
         </ui:define>
       </ui:composition>
     </f:view>

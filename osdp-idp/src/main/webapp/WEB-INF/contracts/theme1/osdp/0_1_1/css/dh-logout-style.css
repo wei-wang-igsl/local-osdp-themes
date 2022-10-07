@@ -1,0 +1,67 @@
+.hide,
+.idp-logout-content,
+.center-block.md.center-block.md
+{
+    display: none;
+}
+
+.dh-idp-logout
+{
+    display: table;
+}
+
+.dh-idp-logout-left,
+.dh-idp-logout-right
+{
+    display: table-cell;
+}
+
+.dh-idp-logout-left
+{
+    width: 310px;
+    vertical-align: top;
+	padding-top: 70px;
+}
+
+.dh-idp-logout-right
+{
+    width: 390px;
+    vertical-align: middle;
+}
+
+.dh-idp-logout,
+.center-container
+{
+    text-align: center;
+}
+
+.dh-idp-logout,
+.dh-idp-loggingout
+{
+    width: 700px;
+    background:white;
+    margin: auto;
+}
+
+.dh-idp-loggingout
+{
+    text-align: left;
+    padding: 20px;
+    font:16px 'Times New Roman';
+}
+
+.dh-idp-logout-img
+{
+	float: left;
+	margin: 100px 0 100px 20px;
+}
+
+p{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font:16px 'Times New Roman';
+    margin: 16px 0;
+}
